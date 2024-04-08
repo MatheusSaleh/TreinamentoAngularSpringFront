@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Situação</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let tarefa of tarefas">
+      <tr>
+        <th scope="row">{{tarefa.id}}</th>
+        <td>{{tarefa.descricao}}</td>
+        <td>{{tarefa.titulo}}</td>
+        <td>{{tarefa.situacao}}</td>
+        <td>{{tarefa.usuario?.nome}}</td>
+        <td>
+            <button class="btn btn-primary m-2">Editar</button>
+            <button class="btn btn-danger" (click)="deletarTarefa(tarefa)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+</table>
