@@ -17,6 +17,10 @@ export class TarefaService {
     return this.http.get<Tarefa[]>(`${this.apiUrl}/tarefas`);
   }
 
+  public cadastrarTarefa(tarefa: Tarefa): Observable<Tarefa>{
+    return this.http.post<Tarefa>(`${this.apiUrl}/tarefas`, tarefa);
+  }
+
   public deleteTarefa(id: number): Observable<Tarefa>{
     return this.http.delete<Tarefa>(`${this.apiUrl}/tarefas/${id}`)
   }

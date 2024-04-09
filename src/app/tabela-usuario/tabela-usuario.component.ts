@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { UsuarioService } from '../service/usuario.service';
-import { Observable } from 'rxjs';
 import { Usuario } from '../shared/Usuario.model';
 import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tabela-usuario',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, FormsModule],
   templateUrl: './tabela-usuario.component.html',
   styleUrl: './tabela-usuario.component.css'
 })
@@ -17,10 +17,11 @@ export class TabelaUsuarioComponent {
 
   public usuarios: Usuario[] = [];
 
+  public usuarioParaCadastrar: Usuario = new Usuario();
+
   ngOnInit() {
     this.buscarUsuarios();
   }
-
 
   public buscarUsuarios(): void{
     this.usuarioService.listarUsuarios().subscribe(
@@ -29,6 +30,11 @@ export class TabelaUsuarioComponent {
         this.usuarios = usuarios;
       }
     );
+  }
+
+  public cadastrarUsuario(): void{
+    this.usuarioService.cadastrarUsuario(this.usuarioParaCadastrar).subscribe();
+    window.location.reload();
   }
 
   public deletarUsuario(usuario: Usuario): void{

@@ -16,6 +16,10 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(`${this.apiUrl}/usuarios`);
   }
 
+  public cadastrarUsuario(usuario: Usuario): Observable<Usuario>{
+    return this.http.post<Usuario>(`${this.apiUrl}/usuarios`, usuario);
+  }
+
   public deletarUsuario(id: number): Observable<Usuario>{
     return this.http.delete<Usuario>(`${this.apiUrl}/usuarios/${id}`)
   }
