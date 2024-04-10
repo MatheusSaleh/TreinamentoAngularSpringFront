@@ -18,9 +18,16 @@
         <th scope="row">{{usuario.id}}</th>
         <td>{{usuario.nome}}</td>
         <td>
-            <button class="btn btn-primary m-2">Editar</button>
+            <button class="btn btn-primary m-2" (click)="editarUsuario(usuario)">Editar</button>
             <button class="btn btn-danger" (click)="deletarUsuario(usuario)">Excluir</button>
         </td>
       </tr>
     </tbody>
   </table>
+
+
+  <div class="container m-2">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" name="nome" id="nome" [(ngModel)]="usuarioParaEditar.nome">
+    <button class="btn btn-success mt-2" (click)="confirmaEdicaoUsuario()">Confimar Edição</button>
+  </div>

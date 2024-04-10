@@ -19,6 +19,8 @@ export class TabelaUsuarioComponent {
 
   public usuarioParaCadastrar: Usuario = new Usuario();
 
+  public usuarioParaEditar: Usuario = new Usuario();
+
   ngOnInit() {
     this.buscarUsuarios();
   }
@@ -34,6 +36,16 @@ export class TabelaUsuarioComponent {
 
   public cadastrarUsuario(): void{
     this.usuarioService.cadastrarUsuario(this.usuarioParaCadastrar).subscribe();
+    window.location.reload();
+  }
+
+  public editarUsuario(usuario: Usuario): void{
+    this.usuarioParaEditar = usuario;
+    
+  }
+
+  public confirmaEdicaoUsuario(): void{
+    this.usuarioService.editarUsuario(this.usuarioParaEditar).subscribe();
     window.location.reload();
   }
 

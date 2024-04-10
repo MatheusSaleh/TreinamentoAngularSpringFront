@@ -20,6 +20,10 @@ export class UsuarioService {
     return this.http.post<Usuario>(`${this.apiUrl}/usuarios`, usuario);
   }
 
+  public editarUsuario(usuario: Usuario): Observable<Usuario>{
+    return this.http.put<Usuario>(`${this.apiUrl}/usuarios/${usuario.id}`, usuario);
+  }
+
   public deletarUsuario(id: number): Observable<Usuario>{
     return this.http.delete<Usuario>(`${this.apiUrl}/usuarios/${id}`)
   }
